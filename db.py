@@ -5,7 +5,11 @@ DATABASE_URL = "mysql+pymysql://2GGrci4B4upeoCZ.root:LMyhBxuApQnhMTy7@gateway01.
 
 engine = create_engine(
     DATABASE_URL,
-    pool_pre_ping=True
+    pool_pre_ping=True,
+    connect_args={
+        "ssl":
+        {"ca": "./ca.pem"}
+    }
 )
 
 SessionLocal = sessionmaker(bind=engine)
